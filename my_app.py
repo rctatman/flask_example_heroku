@@ -1,12 +1,11 @@
-from flask import Flask
-app = Flask(__name__)
+#importing libraries
+import os
+import flask
+import pickle
+
+app=Flask(__name__)
 
 @app.route('/')
-def hello_world():
-    return 'Hello, World!'
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        f = request.files['the_file']
-        f.save('/var/www/uploads/uploaded_file.txt')
+@app.route('/index')
+def index():
+    return flask.render_template('index.html')
