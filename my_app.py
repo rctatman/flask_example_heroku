@@ -1,7 +1,5 @@
 #importing libraries
-import os
 import flask
-import pickle
 
 app=Flask(__name__)
 
