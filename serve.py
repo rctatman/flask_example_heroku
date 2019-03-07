@@ -9,11 +9,8 @@ def get_keywords_api():
         keyword_processor = pickle.load(file)
     
     # get our keywords 
-    def keywords_api(post): 
-        keywords_found = keyword_processor.extract_keywords(post, span_info=True)
-        
-        output_data = json.dumps(keywords_found)
-        
-        return output_data
+    def keywords_api(text): 
+        keywords_found = keyword_processor.extract_keywords(text, span_info=True)      
+        return keywords_found
     
     return keywords_api
