@@ -23,6 +23,10 @@
                 $('#api_input').html( data.input );
                 $('#api_output').html( data.output );
                 $("#input").val("");
+                
+                // check if output was produced
+                console.log( data.output );
+                console.log( data.input );
             },
             error: function( jqXhr, textStatus, errorThrown ){
                 $('#api_output').html( "There was an error" );
