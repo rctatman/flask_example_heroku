@@ -7,8 +7,14 @@
 <!-- form, button and output -->
 <input type="text" id="input" name="input" placeholder="Enter sentence"/>
 <button id="btn">Call API</button>
-<div id="api_output"> </div>
+// <div id="api_output"> </div>
 
+<div class="card-footer bg-white">
+    <pre class="card-text api-pre" style="padding-bottom: 0.2cm">
+        <div class="item" id="api_input">I love Paris </div>
+        <div class="item" id="api_output">0 0   B-LOC</div>
+    </pre>
+</div>
 
 <script type="text/javascript">
     function api_call(input) {
@@ -18,6 +24,7 @@
             contentType: 'application/json',
             data: JSON.stringify(input),
             success: function( data, textStatus, jQxhr ){
+                $('#api_input').html( data.input );
                 $('#api_output').html( data.output );
                 $("#input").val("");
             },
