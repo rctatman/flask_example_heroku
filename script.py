@@ -5,10 +5,10 @@ from serve import get_keywords_api
 
 app=Flask(__name__)
 
+# update index
 @app.route('/')
-@app.route('/index')
 def index():
-    return flask.render_template('index.html')
+    return "Index API"
 
 # page to accept inputs
 @app.route('/api_input')
