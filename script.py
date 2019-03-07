@@ -27,8 +27,9 @@ def api():
     function
     """
     input_data = request.json
-    app.logger.info("api_input: " + str(input_data))
-    output_data = keywords_api(input_data)
-    app.logger.info("api_output: " + str(output_data))
-    response = jsonify(output_data)
+    #app.logger.info("api_input: " + str(input_data))
+    #output_data = keywords_api(input_data)
+    #app.logger.info("api_output: " + str(output_data))
+    #response = jsonify(output_data)
+    response = jsonify(input_data)
     return response
