@@ -10,6 +10,9 @@ def get_keywords_api():
     # get our keywords 
     def keywords_api(post): 
         keywords_found = keyword_processor.extract_keywords(post, span_info=True)
-        return keywords_found
+        
+        output_data = align_data({"input": post, "output": keywords_found})
+        
+        return output_data
     
     return keywords_api
