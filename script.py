@@ -2,6 +2,7 @@
 import flask
 from flask import Flask, jsonify, request
 from serve import get_keywords_api
+import json
 
 app=Flask(__name__)
 
@@ -31,5 +32,6 @@ def api():
     #output_data = keywords_api(input_data)
     #app.logger.info("api_output: " + str(output_data))
     #response = jsonify(output_data)
-    response = jsonify(input_data)
-    return response
+    
+    print(input_data)
+    return json.dumps(input_data)
