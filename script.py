@@ -17,7 +17,7 @@ def client():
 
 
 # load the model
-model_api = get_keywords_api()
+keywords_api = get_keywords_api()
 
 # API route
 @app.route('/api', methods=['POST'])
