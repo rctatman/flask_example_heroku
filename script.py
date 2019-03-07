@@ -1,7 +1,7 @@
 #importing libraries
 import flask
 from flask import Flask, jsonify, request
-from serve import keywords_api
+from serve import get_keywords_api
 
 app=Flask(__name__)
 
@@ -16,10 +16,19 @@ def client():
     return flask.render_template('simple_client.html')
 
 
-# right now this just returns the data you give it
+# load the model
+model_api = get_keywords_api()
+
+# API route
 @app.route('/api', methods=['POST'])
 def api():
+    """API function
+    All model-specific logic to be defined in the get_model_api()
+    function
+    """
     input_data = request.json
+    app.logger.info("api_input: " + str(input_data))
     output_data = keywords_api(input_data)
+    app.logger.info("api_output: " + str(output_data))
     response = jsonify(output_data)
     return response
