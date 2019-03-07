@@ -11,3 +11,5 @@ def get_keywords_api():
     def keywords_api(post): 
         keywords_found = keyword_processor.extract_keywords(post, span_info=True)
         return keywords_found
+    
+    return keywords_api
