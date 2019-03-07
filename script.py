@@ -1,6 +1,7 @@
 #importing libraries
 import flask
 from flask import Flask, jsonify, request
+import nerish_model
 
 app=Flask(__name__)
 
@@ -19,6 +20,6 @@ def client():
 @app.route('/api', methods=['POST'])
 def api():
     input_data = request.json
-    output_data = input_data
+    output_data = get_keywords(input_data)
     response = jsonify(output_data)
     return response
