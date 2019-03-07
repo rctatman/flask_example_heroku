@@ -12,7 +12,7 @@ def get_keywords_api():
     def keywords_api(post): 
         keywords_found = keyword_processor.extract_keywords(post, span_info=True)
         
-        ouput_data = json.dumps(keyword_found)
+        ouput_data = json.dumps(keywords_found)
         
         return output_data
     
