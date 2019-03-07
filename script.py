@@ -11,10 +11,12 @@ app=Flask(__name__)
 def index():
     return "Up and running!"
 
-# load the model
+# load our pre-trained model & function to runn it on new data
+# design based on one proposed by Guillaume Genthial
+# more details: https://guillaumegenthial.github.io/serving.html
 keywords_api = get_keywords_api()
 
-# API route
+# Define a post method for our API. 
 @app.route('/api', methods=['POST'])
 def api():
     """API function
