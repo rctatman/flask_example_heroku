@@ -1,5 +1,6 @@
 from flashtext.keyword import KeywordProcessor
 import pickle
+import json
 
 # funtion that takes in a text string & returns "NER" output
 def get_keywords_api():
@@ -11,7 +12,7 @@ def get_keywords_api():
     def keywords_api(post): 
         keywords_found = keyword_processor.extract_keywords(post, span_info=True)
         
-        output_data = align_data({"input": post, "output": keywords_found})
+        ouput_data = json.dumps(keyword_found)
         
         return output_data
     
