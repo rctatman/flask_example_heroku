@@ -11,7 +11,7 @@ def index():
 
 # page to accept inputs
 @app.route('/api_input')
-def index():
+def client():
     return flask.render_template('simple_client.html')
 
 
