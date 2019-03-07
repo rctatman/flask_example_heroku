@@ -3,8 +3,10 @@ import flask
 from flask import Flask, jsonify, request
 from serve import get_keywords_api
 import json
+from flask_httpauth import HTTPBasicAuth
 
 app=Flask(__name__)
+auth = HTTPBasicAuth()
 
 # this will print some text at our app's URL
 @app.route('/')
@@ -16,6 +18,7 @@ keywords_api = get_keywords_api()
 
 # API route
 @app.route('/api', methods=['POST'])
+@auth.login_required
 def api():
     """API function
     All model-specific logic to be defined in the get_model_api()
