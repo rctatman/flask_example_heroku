@@ -8,6 +8,19 @@ from flask_httpauth import HTTPBasicAuth
 app=Flask(__name__)
 auth = HTTPBasicAuth()
 
+# plain text user data
+# DO NOT DO THIS IN PRODUCTION
+USER_DATA = {
+    "user1": "password"
+}
+
+# fucntion to varify password passed through API
+@auth.verify_password
+def verify(username, password):
+    if not (username and password):
+        return False
+    return USER_DATA.get(username) == password
+
 # this will print some text at our app's URL
 @app.route('/')
 def index():
