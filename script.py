@@ -6,10 +6,10 @@ import json
 
 app=Flask(__name__)
 
-# update index
+# this will print some text at our app's URL
 @app.route('/')
 def index():
-    return "Index API"
+    return "Up and running!"
 
 # load the model
 keywords_api = get_keywords_api()
@@ -22,10 +22,12 @@ def api():
     function
     """
     input_data = request.json
-    app.logger.info("api_input: " + str(input_data))
+    
+    # use our API function to get the keywords
     output_data = keywords_api(input_data)
-    app.logger.info("api_output: " + str(output_data))
+
+    # convert our dictionary into a .json file
     response = json.dumps(output_data)
     
-    print(response)
+    # return our json file
     return response
