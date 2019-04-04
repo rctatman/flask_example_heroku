@@ -17,13 +17,14 @@ def index():
 keywords_api = get_keywords_api()
 
 # Define a post method for our API. 
-@app.route('/api', methods=['POST'])
-def api():
+@app.route('/extractpackages', methods=['POST'])
+def extractpackages():
     """API function
     All model-specific logic to be defined in the get_model_api()
     function
     """
-    input_data = request.get_data()
+    # specify that we want plain text data
+    input_data = request.get_data(as_text=False)
     
     # use our API function to get the keywords
     output_data = keywords_api(input_data)
