@@ -23,7 +23,7 @@ def api():
     All model-specific logic to be defined in the get_model_api()
     function
     """
-    input_data = request.json
+    input_data = request.get_data()
     
     # use our API function to get the keywords
     output_data = keywords_api(input_data)
