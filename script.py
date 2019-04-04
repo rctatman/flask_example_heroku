@@ -1,35 +1,38 @@
-#importing libraries
-import flask
 from flask import Flask, jsonify, request
 from serve import get_keywords_api
 import json
 
 app=Flask(__name__)
 
-# this will print some text at our app's URL
+# This will print some text at our app's URL
+# so that we can check that it's working. If you 
+# wanted a more complex UI you could put it here.
 @app.route('/')
 def index():
     return "Up and running!"
 
-# load our pre-trained model & function to runn it on new data
-# design based on one proposed by Guillaume Genthial
-# more details: https://guillaumegenthial.github.io/serving.html
+# load our pre-trained model & function to run it on
+# new data. This design is based on one proposed by 
+# Guillaume Genthial. More details: 
+#https://guillaumegenthial.github.io/serving.html
 keywords_api = get_keywords_api()
 
 # Define a post method for our API. 
 @app.route('/extractpackages', methods=['POST'])
+# function that this method will run
 def extractpackages():
-    """API function
-    All model-specific logic to be defined in the get_model_api()
-    function
+    """Extract packages
+    Pass in a single json file with a text span in it. It 
+    will return any Python packages mentioned in that span,
+    along with their index (in characters).
     """
-    # get the json file with our text in it
+    # get the json file with our text data in it
     input_data = request.get_json()
     
-    # use our API function to get the keywords
+    # use our API function to extract the keywords
     output_data = keywords_api(input_data)
 
-    # convert our dictionary into a .json file
+    # convert our dictionary output into a .json file
     response = json.dumps(output_data)
     
     # return our json file
