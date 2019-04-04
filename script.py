@@ -23,8 +23,8 @@ def extractpackages():
     All model-specific logic to be defined in the get_model_api()
     function
     """
-    # specify that we want plain text data
-    input_data = request.get_data(as_text=False)
+    # get the json file with our text in it
+    input_data = request.get_json()
     
     # use our API function to get the keywords
     output_data = keywords_api(input_data)
